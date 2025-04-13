@@ -8,4 +8,6 @@ pluginManagement {
         id "${quarkusPluginId}" version "${quarkusPluginVersion}"
     }
 }
-rootProject.name = 'salahtimes'
+rootProject.name = "salahtimes"
+
+include("salahtimes-calculator")
