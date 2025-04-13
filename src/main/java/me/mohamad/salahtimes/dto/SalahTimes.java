@@ -6,16 +6,23 @@ import com.batoulapps.adhan.data.DateComponents;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 public final class SalahTimes {
 	
 	private static final CalculationMethod DEFAULT_CALCULATION_METHOD;
 	private static final CalculationParameters DEFAULT_CALCULATION_PARAMETERS;
 	
+	private static final DateTimeFormatter DEFAULT_DATE_FORMAT;
+	private static final DateTimeFormatter DEFAULT_TIME_FORMAT;
+	
 	static {
 		DEFAULT_CALCULATION_METHOD = CalculationMethod.MUSLIM_WORLD_LEAGUE;
 		DEFAULT_CALCULATION_PARAMETERS = DEFAULT_CALCULATION_METHOD.getParameters();
 		DEFAULT_CALCULATION_PARAMETERS.madhab = Madhab.SHAFI;
+		
+		DEFAULT_DATE_FORMAT = DateTimeFormatter.ofPattern("MMMM dd, yyyy");
+		DEFAULT_TIME_FORMAT = DateTimeFormatter.ofPattern("hh:mm a");
 	}
 	
 	public final String method;
@@ -49,6 +56,14 @@ public final class SalahTimes {
 		asr = LocalTime.ofInstant(prayerTimes.asr.toInstant(), zoneId);
 		maghrib = LocalTime.ofInstant(prayerTimes.maghrib.toInstant(), zoneId);
 		isha = LocalTime.ofInstant(prayerTimes.isha.toInstant(), zoneId);
+	}
+	
+	public SalahTimesData toData() {
+		return new SalahTimesData(
+				DEFAULT_DATE_FORMAT,
+				DEFAULT_TIME_FORMAT,
+				this
+		);
 	}
 	
 }

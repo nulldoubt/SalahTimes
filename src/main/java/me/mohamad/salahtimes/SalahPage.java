@@ -29,7 +29,7 @@ public class SalahPage {
 			@QueryParam("latitude") double latitude,
 			@QueryParam("date") @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") LocalDate date
 	) {
-		return page.data("salahTimes", new SalahTimes(longitude, latitude, date != null ? date : LocalDate.now()));
+		return page.data("salahTimes", new SalahTimes(longitude, latitude, date != null ? date : LocalDate.now()).toData());
 	}
 	
 }

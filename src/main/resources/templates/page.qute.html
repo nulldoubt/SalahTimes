@@ -1,36 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salah Times</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap"
+          rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #0a96c5;
+            --secondary-color: #0c7ba1;
+            --accent-color: #f5d76e;
+            --text-color: #333;
+            --light-color: #f8f9fa;
+        }
+
         body {
-            background-color: #0a96c5;
-            color: #fff;
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-family: 'Amiri', serif;
+            font-size: 2.2rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .header .date {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        .prayer-times {
+            padding: 1.5rem;
+        }
+
+        .prayer-time {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .prayer-time:last-child {
+            border-bottom: none;
+        }
+
+        .prayer-name {
+            font-family: 'Amiri', serif;
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        .prayer-time .time {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: auto;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+            }
+
+            .prayer-name {
+                font-size: 1.2rem;
+            }
+
+            .prayer-time .time {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
 <body>
-<h1>Salah</h1>
+<div class="container">
+    <div class="header">
+        <h1>مواقيت الصلاة</h1>
+        <div class="date" id="current-date">{salahTimes.date}</div>
+    </div>
 
-<dl id="times">
-    <dt>Fajr</dt>
-    <dd>{salahTimes.fajr}</dd>
+    <div class="prayer-times">
+        <div class="prayer-time">
+            <span class="prayer-name">Fajr</span>
+            <span class="time" id="fajr-time">{salahTimes.fajr}</span>
+        </div>
 
-    <dt>Sunrise</dt>
-    <dd>{salahTimes.sunrise}</dd>
+        <div class="prayer-time">
+            <span class="prayer-name">Sunrise</span>
+            <span class="time" id="sunrise-time">{salahTimes.sunrise}</span>
+        </div>
 
-    <dt>Dhuhr</dt>
-    <dd>{salahTimes.dhuhr}</dd>
+        <div class="prayer-time">
+            <span class="prayer-name">Dhuhr</span>
+            <span class="time" id="dhuhr-time">{salahTimes.dhuhr}</span>
+        </div>
 
-    <dt>Asr</dt>
-    <dd>{salahTimes.asr}</dd>
+        <div class="prayer-time">
+            <span class="prayer-name">Asr</span>
+            <span class="time" id="asr-time">{salahTimes.asr}</span>
+        </div>
 
-    <dt>Maghrib</dt>
-    <dd>{salahTimes.maghrib}</dd>
+        <div class="prayer-time">
+            <span class="prayer-name">Maghrib</span>
+            <span class="time" id="maghrib-time">{salahTimes.maghrib}</span>
+        </div>
 
-    <dt>Isha</dt>
-    <dd>{salahTimes.isha}</dd>
-</dl>
+        <div class="prayer-time">
+            <span class="prayer-name">Isha</span>
+            <span class="time" id="isha-time">{salahTimes.isha}</span>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    Prayer Times | {salahTimes.method}
+</div>
+
 </body>
 </html>
