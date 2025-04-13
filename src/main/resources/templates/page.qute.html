@@ -2,30 +2,35 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Hello {name ?: "Qute"}</title>
+    <title>Salah Times</title>
     <style>
         body {
-            background-color: #000;
+            background-color: #0a96c5;
             color: #fff;
-        }
-
-        h1 {
-            color: #4695EB;
-            font-size: 6vw;
-        }
-
-        h1 b {
-            color: #be9100;
-        }
-
-        p {
-            font-size: 2vw;
         }
     </style>
 </head>
 <body>
-<h1>Hello <b>{name ?: "Qute"}</b></h1>
+<h1>Salah</h1>
 
-<p>Create your web page using Quarkus RESTEasy & Qute</p>
+<dl id="times">
+    <dt>Fajr</dt>
+    <dd>{salahTimes.fajr}</dd>
+
+    <dt>Sunrise</dt>
+    <dd>{salahTimes.sunrise}</dd>
+
+    <dt>Dhuhr</dt>
+    <dd>{salahTimes.dhuhr}</dd>
+
+    <dt>Asr</dt>
+    <dd>{salahTimes.asr}</dd>
+
+    <dt>Maghrib</dt>
+    <dd>{salahTimes.maghrib}</dd>
+
+    <dt>Isha</dt>
+    <dd>{salahTimes.isha}</dd>
+</dl>
 </body>
 </html>
